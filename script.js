@@ -54,7 +54,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // -------------------------------------------------------
     // Contact form -> Google Sheets via Apps Script Web App
     // -------------------------------------------------------
-    const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyFsCb6xrZV91-1lNxDVkENhdhcul62UqQCrqsc6rAIpXJGseYHe15VuD2X_v9rQmVn/exec';
+    const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyKB7p_FaDssdXqYyxQi-7sl2mP2vw41vRjwZVmNkaSidKYx8-IitiY4CbsM0LTwvkk/exec';
 
     const contactForm = document.getElementById('contact-form');
     if (contactForm) {
