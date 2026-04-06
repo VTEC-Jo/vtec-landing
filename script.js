@@ -51,36 +51,47 @@ document.addEventListener('DOMContentLoaded', () => {
         localStorage.setItem('theme', newTheme);
     });
 
+    // -------------------------------------------------------
+    // Contact form -> Google Sheets via Apps Script Web App
+    // Replace APPS_SCRIPT_URL with your deployed Web App URL
+    // -------------------------------------------------------
+    const APPS_SCRIPT_URL = 'YOUR_APPS_SCRIPT_WEB_APP_URL';
+
     const contactForm = document.getElementById('contact-form');
-    if(contactForm) {
-        contactForm.addEventListener('submit', function(e) {
+    if (contactForm) {
+        contactForm.addEventListener('submit', function (e) {
             e.preventDefault();
             const formStatus = document.getElementById('form-status');
-            const formData = new FormData(contactForm);
-            const action = contactForm.getAttribute('action');
-
             formStatus.textContent = 'Sending...';
-            fetch(action, {
+            formStatus.style.color = '';
+
+            const name    = document.getElementById('name').value.trim();
+            const email   = document.getElementById('email').value.trim();
+            const message = document.getElementById('message').value.trim();
+
+            const payload = JSON.stringify({ name, email, message });
+
+            fetch(APPS_SCRIPT_URL, {
                 method: 'POST',
-                body: formData,
-                headers: {
-                    'Accept': 'application/json'
-                }
-            }).then(response => {
-                if (response.ok) {
-                    formStatus.textContent = 'Thanks for your submission!';
+                // Apps Script doPost reads the raw body; no JSON content-type header
+                // because cross-origin preflight blocks it — use text/plain trick
+                headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+                body: payload
+            })
+            .then(res => res.json())
+            .then(data => {
+                if (data.result === 'success') {
+                    formStatus.textContent = 'Message received! We\'ll be in touch soon.';
+                    formStatus.style.color = 'var(--color-success, green)';
                     contactForm.reset();
                 } else {
-                    response.json().then(data => {
-                        if (Object.hasOwn(data, 'errors')) {
-                            formStatus.textContent = data["errors"].map(error => error["message"]).join(", ")
-                        } else {
-                            formStatus.textContent = 'Oops! There was a problem submitting your form'
-                        }
-                    })
+                    throw new Error(data.error || 'Unknown error');
                 }
-            }).catch(error => {
-                formStatus.textContent = 'Oops! There was a problem submitting your form'
+            })
+            .catch(err => {
+                console.error('Form submission error:', err);
+                formStatus.textContent = 'Something went wrong. Please email us directly.';
+                formStatus.style.color = 'var(--color-error, red)';
             });
         });
     }
