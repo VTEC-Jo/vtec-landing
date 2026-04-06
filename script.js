@@ -136,4 +136,50 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
     }
+
+    // -------------------------------------------------------
+    // Workshop form -> Google Sheets via Apps Script Web App
+    // -------------------------------------------------------
+    const workshopForm = document.getElementById('workshop-form');
+    if (workshopForm) {
+        workshopForm.addEventListener('submit', function (e) {
+            e.preventDefault();
+            const formStatus = document.getElementById('workshop-form-status');
+            formStatus.textContent = 'Sending...';
+            formStatus.style.color = '';
+
+            const name              = document.getElementById('workshop-name').value.trim();
+            const email             = document.getElementById('workshop-email').value.trim();
+            const phone             = document.getElementById('workshop-phone').value.trim();
+            const organization      = document.getElementById('workshop-organization').value.trim();
+            const workshopInterest  = document.getElementById('workshop-interest').value;
+            const preferredTiming   = document.getElementById('workshop-timing').value.trim();
+            const participants      = document.getElementById('workshop-participants').value.trim();
+            const message           = document.getElementById('workshop-message').value.trim();
+            const inquiryType       = 'workshop';
+
+            const payload = JSON.stringify({ name, email, phone, organization, workshopInterest, preferredTiming, participants, message, inquiryType });
+
+            fetch(APPS_SCRIPT_URL, {
+                method: 'POST',
+                headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+                body: payload
+            })
+            .then(res => res.json())
+            .then(data => {
+                if (data.result === 'success') {
+                    formStatus.textContent = 'Registration received! We\'ll be in touch with workshop details soon.';
+                    formStatus.style.color = 'var(--color-success, green)';
+                    workshopForm.reset();
+                } else {
+                    throw new Error(data.error || 'Unknown error');
+                }
+            })
+            .catch(err => {
+                console.error('Workshop form submission error:', err);
+                formStatus.textContent = 'Something went wrong. Please email us directly at hello@vtec.example';
+                formStatus.style.color = 'var(--color-error, red)';
+            });
+        });
+    }
 });
