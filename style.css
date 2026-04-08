@@ -302,30 +302,6 @@ img {
     justify-content: center;
 }
 
-/* Credibility Strip: Horizontal list of core expertise areas */
-.credibility-strip {
-    margin-top: var(--space-xl);
-    border-top: 1px solid var(--border);
-    border-bottom: 1px solid var(--border);
-    padding: var(--space-md) 0;
-}
-
-.strip-list {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: var(--space-md);
-}
-
-.strip-list li {
-    font-family: var(--font-mono);
-    font-size: 0.85rem;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    color: var(--text-muted);
-}
-
 /* ========================================
    SECTION: GENERAL PAGE SECTIONS
    ======================================== */
@@ -809,10 +785,6 @@ img {
     
     .grid-card {
         grid-column: span 1 !important;
-    }
-    
-    .strip-list {
-        justify-content: center;
     }
     
     .footer-nav {

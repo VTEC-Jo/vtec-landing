@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Removed
+- Credibility strip section from index.html, workshops.html, and related CSS
+
 ### Added
 - Initial CHANGELOG.md setup
 - Comprehensive inline code comments across all files
