@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+- robots.txt for search engine crawl instructions
+- sitemap.xml listing all site pages
+- Canonical URL meta tags on all HTML pages
+- Open Graph image (og-image.png) for social media sharing
+
 ## [1.2.0] - 2026-04-08
 
 ### Removed

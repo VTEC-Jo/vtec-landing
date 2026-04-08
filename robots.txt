@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://vtec.example.com/sitemap.xml
