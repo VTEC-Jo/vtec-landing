@@ -576,8 +576,13 @@ select:focus-visible {
     padding: 0.8rem;
     border: 1px solid var(--border);
     background-color: var(--bg-alt);
+    color: var(--text);
     font-family: inherit;
     border-radius: var(--radius);
+}
+
+.form-group textarea {
+    resize: none;
 }
 
 .form-group input:focus, 
@@ -656,6 +661,19 @@ select:focus-visible {
    SECTION: PAGE-SPECIFIC STYLES
    ======================================== */
 
+/* Partner Form Section - Additional spacing */
+#partner-form-section {
+    margin-top: var(--space-lg);
+}
+
+#partner-form-section .section-header {
+    margin-bottom: var(--space-xl);
+}
+
+#partner-form-section .section-title {
+    margin-bottom: var(--space-md);
+}
+
 /* Partner Page Specific Styles */
 .partner-form-wrapper {
     max-width: 700px;
@@ -688,6 +706,7 @@ select:focus-visible {
     padding: 0.8rem;
     border: 1px solid var(--border);
     background-color: var(--bg-alt);
+    color: var(--text);
     font-family: inherit;
     border-radius: var(--radius);
     font-size: inherit;
