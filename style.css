@@ -536,6 +536,141 @@ select:focus-visible {
     flex-direction: column;
 }
 
+.service-scene {
+    width: clamp(4rem, 9vw, 4.75rem);
+    height: 3rem;
+    margin: 0 auto 1rem;
+    color: var(--accent);
+    display: block;
+    flex-shrink: 0;
+}
+
+.service-scene svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+    overflow: visible;
+}
+
+.service-scene .scene-stroke,
+.service-scene .scene-soft,
+.service-scene .scene-awake,
+.service-scene .scene-fill {
+    transition: transform 0.42s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.32s ease, stroke-opacity 0.32s ease, fill-opacity 0.32s ease;
+    transform-origin: center;
+}
+
+.service-scene .scene-stroke {
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.35;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    opacity: 0.58;
+}
+
+.service-scene .scene-soft {
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.15;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    opacity: 0.28;
+}
+
+.service-scene .scene-awake {
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.25;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    opacity: 0.16;
+}
+
+.service-scene .scene-fill {
+    fill: currentColor;
+    opacity: 0.14;
+}
+
+.service-item:hover .service-scene .scene-awake {
+    opacity: 0.9;
+}
+
+.service-item:hover .service-scene .scene-rest {
+    opacity: 0.08;
+}
+
+.service-item:hover .service-scene .scene-fill {
+    opacity: 0.34;
+}
+
+.service-scene--web .scene-awake {
+    transform: translateY(2px);
+}
+
+.service-scene--web .scene-rest {
+    transform: translateY(0);
+}
+
+.service-item:hover .service-scene--web .scene-awake {
+    transform: translateY(0);
+}
+
+.service-item:hover .service-scene--web .scene-rest {
+    transform: translate(-1px, -5px);
+}
+
+.service-scene--mobile .scene-awake {
+    transform: translateY(2px) scale(0.96);
+}
+
+.service-item:hover .service-scene--mobile .scene-awake {
+    transform: translateY(0) scale(1);
+}
+
+.service-scene--backend .scene-awake {
+    transform: translateY(7px);
+}
+
+.service-item:hover .service-scene--backend .scene-awake {
+    transform: translateY(0);
+}
+
+.service-scene--devops .scene-awake:last-child,
+.service-scene--devops .scene-fill {
+    transform: translateX(0);
+}
+
+.service-item:hover .service-scene--devops .scene-awake:last-child,
+.service-item:hover .service-scene--devops .scene-fill {
+    transform: translateX(42px);
+}
+
+.service-scene--crm .scene-fill {
+    transform: translateX(0);
+}
+
+.service-item:hover .service-scene--crm .scene-fill {
+    transform: translateX(36px);
+}
+
+.service-scene--rag .scene-awake {
+    transform: scale(0.88);
+    transform-origin: 48px 26px;
+}
+
+.service-item:hover .service-scene--rag .scene-awake {
+    transform: scale(1);
+}
+
+.service-scene--consulting .scene-awake {
+    transform: translateX(-4px);
+}
+
+.service-item:hover .service-scene--consulting .scene-awake {
+    transform: translateX(0);
+}
+
 .service-item:hover {
     border-color: var(--accent);
     transform: translateY(-5px);
@@ -546,12 +681,12 @@ select:focus-visible {
     font-family: var(--font-mono);
     font-size: 0.9rem;
     color: var(--accent);
-    margin-bottom: var(--space-sm);
+    margin-bottom: 0.85rem;
 }
 
 .service-title {
     font-size: 1.25rem;
-    margin-bottom: var(--space-sm);
+    margin-bottom: 0.85rem;
 }
 
 .service-desc {
@@ -1677,6 +1812,38 @@ select:focus-visible {
 [data-theme="dark"] .workshop-card,
 [data-theme="dark"] .partner-form-wrapper {
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2), 0 1px 2px rgba(0, 0, 0, 0.15);
+}
+
+[data-theme="dark"] .service-scene .scene-stroke {
+    opacity: 0.68;
+}
+
+[data-theme="dark"] .service-scene .scene-soft {
+    opacity: 0.34;
+}
+
+[data-theme="dark"] .service-item:hover .service-scene .scene-fill {
+    opacity: 0.4;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .service-item,
+    .service-scene .scene-stroke,
+    .service-scene .scene-soft,
+    .service-scene .scene-awake,
+    .service-scene .scene-fill {
+        transition: none;
+    }
+
+    .service-item:hover {
+        transform: none;
+    }
+
+    .service-scene .scene-rest,
+    .service-scene .scene-awake,
+    .service-scene .scene-fill {
+        transform: none;
+    }
 }
 
 [data-theme="dark"] .cta-card {
