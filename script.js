@@ -195,6 +195,39 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // -------------------------------------------------------
+    // Email Button Fallback
+    // Copies email to clipboard and shows a toast for users
+    // whose browser has no default mail client configured.
+    // -------------------------------------------------------
+    function showEmailToast(message) {
+        const existing = document.getElementById('email-toast');
+        if (existing) existing.remove();
+        const toast = document.createElement('div');
+        toast.id = 'email-toast';
+        toast.textContent = message;
+        toast.setAttribute('role', 'status');
+        toast.setAttribute('aria-live', 'polite');
+        document.body.appendChild(toast);
+        // Trigger animation
+        requestAnimationFrame(() => toast.classList.add('email-toast--visible'));
+        setTimeout(() => {
+            toast.classList.remove('email-toast--visible');
+            setTimeout(() => toast.remove(), 300);
+        }, 3000);
+    }
+
+    document.querySelectorAll('a[href^="mailto:"]').forEach(link => {
+        link.addEventListener('click', () => {
+            const email = link.href.replace('mailto:', '');
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(email).then(() => {
+                    showEmailToast('Email copied: ' + email);
+                }).catch(() => {});
+            }
+        });
+    });
+
+    // -------------------------------------------------------
     // Header Scroll Behavior
     // Hides header on scroll down, shows on scroll up
     // -------------------------------------------------------

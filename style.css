@@ -72,6 +72,7 @@ body {
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
     transition: background-color var(--transition), color var(--transition);
+    overflow-x: hidden;
 }
 
 h1, h2, h3, h4 {
@@ -228,7 +229,7 @@ select:focus-visible {
     font-weight: 700;
     letter-spacing: 0.05em;
     color: var(--text);
-    margin-right: var(--space-xl);
+    margin-right: var(--space-lg);
 }
 
 .nav-list {
@@ -864,6 +865,37 @@ select:focus-visible {
 }
 
 /* ========================================
+   SECTION: EMAIL TOAST
+   ======================================== */
+#email-toast {
+    position: fixed;
+    bottom: 1.5rem;
+    left: 50%;
+    transform: translateX(-50%) translateY(1rem);
+    background-color: var(--accent);
+    color: #fff;
+    padding: 0.75rem 1.5rem;
+    border-radius: var(--radius);
+    font-size: 0.9rem;
+    font-weight: 500;
+    white-space: nowrap;
+    opacity: 0;
+    transition: opacity 0.25s ease, transform 0.25s ease;
+    z-index: 9999;
+    pointer-events: none;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+}
+
+#email-toast.email-toast--visible {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+}
+
+[data-theme="dark"] #email-toast {
+    color: #121212;
+}
+
+/* ========================================
    SECTION: FOOTER
    ======================================== */
 .footer {
@@ -923,12 +955,21 @@ select:focus-visible {
     .footer-inner {
         flex-wrap: wrap;
         gap: var(--space-xs);
+        align-items: center;
+    }
+    .footer-logo {
+        flex-shrink: 0;
+    }
+    .footer-icons {
+        margin-left: auto;
     }
     .footer-tagline {
         flex-basis: 100%;
+        order: 3;
     }
     .footer-copy {
         flex-basis: 100%;
+        order: 4;
     }
 }
 
@@ -1013,6 +1054,7 @@ select:focus-visible {
 /* Workshop Slider */
 .workshop-slider-wrapper {
     overflow: visible;
+    margin-top: 2rem;
     padding-top: 6px;
 }
 
@@ -1120,21 +1162,39 @@ select:focus-visible {
         grid-template-columns: 1fr;
     }
 
+    /* Remove card-level padding so stacked sections fill edge-to-edge */
+    .cta-card {
+        padding: 0;
+    }
+
+    .cta-content {
+        padding: var(--space-lg);
+    }
+
     .cta-form-wrapper {
         border-left: none;
         border-top: 1px solid var(--border);
+        padding: var(--space-lg);
     }
 
     [data-theme="dark"] .cta-form-wrapper {
         border-top-color: rgba(255, 255, 255, 0.08);
     }
-    
 }
 
 @media (max-width: 768px) {
     :root {
         --space-xl: 3rem;
         --space-lg: 2rem;
+    }
+
+    .contact-methods {
+        flex-direction: column;
+    }
+
+    .contact-methods .btn {
+        max-width: none;
+        width: 100%;
     }
     
     .nav {
@@ -1191,11 +1251,15 @@ select:focus-visible {
 }
 
 @media (max-width: 480px) {
-    .cta-card {
-        padding: var(--space-sm);
+    .cta-content {
+        padding: var(--space-md);
     }
 
     .cta-form-wrapper {
+        padding: var(--space-md);
+    }
+
+    .partner-form-wrapper {
         padding: var(--space-sm);
     }
 
@@ -1205,6 +1269,14 @@ select:focus-visible {
 
     .hero-description {
         font-size: 1rem;
+    }
+
+    .section-subtitle {
+        font-size: 0.9rem;
+    }
+
+    .text-large {
+        font-size: 1.1rem;
     }
 }
 
