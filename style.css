@@ -225,11 +225,31 @@ select:focus-visible {
 }
 
 .logo {
+    display: inline-flex;
+    align-items: center;
+    min-height: 60px;
     font-size: 1.5rem;
     font-weight: 700;
+    line-height: 1;
     letter-spacing: 0.05em;
     color: var(--text);
     margin-right: var(--space-lg);
+    flex-shrink: 0;
+}
+
+.logo .logo-text {
+    display: inline-flex;
+    align-items: center;
+    min-height: 60px;
+    line-height: 1;
+}
+
+.logo .brand-logo-svg {
+    display: block;
+    width: auto;
+    height: 60px;
+    transform: translateY(-9px);
+    filter: brightness(0) saturate(100%) invert(79%) sepia(14%) saturate(1086%) hue-rotate(124deg) brightness(86%) contrast(87%);
 }
 
 .nav-list {

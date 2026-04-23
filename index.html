@@ -3,16 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>VTEC | Senior Engineering for Web, Mobile & AI in Jordan</title>
     <meta name="description" content="VTEC is an Amman-based engineering partner building web apps, mobile products, backend systems, CRM automation, and AI solutions for businesses in Jordan.">
+    <meta name="keywords" content="web development, mobile apps, backend systems, AI solutions, CRM automation, engineering partner Jordan">
+    <meta name="author" content="VTEC">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="language" content="English">
+    <meta name="revisit-after" content="7 days">
     <link rel="canonical" href="https://www.vtec-jo.com/">
+    <link rel="alternate" hreflang="en" href="https://www.vtec-jo.com/">
 
-    <!-- Security -->
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://script.google.com https://script.googleusercontent.com; frame-ancestors 'none';">
+    <!-- Security & CSP -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://fonts.googleapis.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https: blob:; connect-src 'self' https://script.google.com https://script.googleusercontent.com; media-src 'self' blob:; frame-ancestors 'none'; form-action 'self'; base-uri 'self'; upgrade-insecure-requests;">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta http-equiv="X-Frame-Options" content="DENY">
     <meta name="referrer" content="strict-origin-when-cross-origin">
+    <meta name="permissions-policy" content="geolocation=(), microphone=(), camera=()">
+    <meta http-equiv="Permissions-Policy" content="geolocation=(), microphone=(), camera=()">
 
-    <!-- SEO & Social: Meta tags for search engines and social media sharing -->
+    <!-- SEO & Social -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://www.vtec-jo.com/">
     <meta property="og:site_name" content="VTEC">
@@ -22,14 +32,22 @@
     <meta property="og:image" content="https://www.vtec-jo.com/assets/og-image.png">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:title" content="VTEC | Senior Engineering for Web, Mobile & AI in Jordan">
-    <meta property="twitter:description" content="Amman-based senior engineering partner delivering web platforms, mobile apps, automation, and AI solutions for startups and businesses.">
-    <meta property="twitter:image" content="https://www.vtec-jo.com/assets/og-image.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@vtecjo">
+    <meta name="twitter:title" content="VTEC | Senior Engineering for Web, Mobile & AI in Jordan">
+    <meta name="twitter:description" content="Amman-based senior engineering partner delivering web platforms, mobile apps, automation, and AI solutions for startups and businesses.">
+    <meta name="twitter:image" content="https://www.vtec-jo.com/assets/og-image.png">
 
     <!-- Favicon -->
-    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+    <link rel="icon" href="assets/favicon-untitled-16.png?v=3" type="image/png" sizes="16x16">
     <link rel="manifest" href="/manifest.json">
+
+    <!-- Preload Critical Resources -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" as="style">
+    <link rel="preload" href="style.css" as="style">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+    <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -94,7 +112,9 @@
         <div class="container">
             <div class="header-inner">
                 <a href="#hero" class="logo" aria-label="VTEC Home">
-                    <span class="logo-text">VTEC</span>
+                  <span class="logo-text" aria-hidden="true">
+                    <img class="brand-logo-svg" src="assets/videos-images/logo-3-clean.svg" alt="VTEC logo" width="172" height="172">
+                  </span>
                 </a>
                 <nav class="nav" id="nav-menu" aria-label="Main navigation">
                     <ul class="nav-list">

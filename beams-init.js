@@ -147,8 +147,6 @@ function createStackedPlanesGeometry(n, width, height, spacing, heightSegments) 
 // ── Init ────────────────────────────────────────────────────────
 document.addEventListener('DOMContentLoaded', () => {
   if (window.matchMedia?.('(prefers-reduced-motion: reduce)').matches) return;
-  const _conn = navigator.connection || navigator.mozConnection;
-  if (_conn && (_conn.saveData || ['slow-2g', '2g', '3g'].includes(_conn.effectiveType))) return;
 
   const container = document.getElementById('workshops-beams');
   if (!container) return;
